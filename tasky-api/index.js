@@ -7,6 +7,8 @@ import express from 'express';
 import tasksRouter from './api/tasks';
 //... other imports
 import usersRouter from './api/users';
+import authenticate from './authenticate';
+
 
 
 
@@ -31,7 +33,7 @@ const port = process.env.PORT;
 app.use(express.json());
 
 
-app.use('/api/tasks', tasksRouter);
+app.use('/api/tasks', authenticate, tasksRouter);
 
 //Users router
 app.use('/api/users', usersRouter);
